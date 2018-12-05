@@ -13,7 +13,6 @@ import MapKit
 class SearchController: UIViewController {
     
     var delegate: SearchResultDelegate?
-    
     var searchTimer: Timer?
     var searchResults: [MKMapItem] = []
     
@@ -49,16 +48,20 @@ extension SearchController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchPhrase = searchController.searchBar.text else { return }
         
-        searchTimer?.invalidate()
         
-        // Prevent 3
+        /*
+         If you send multiple simultanious requests to apple you get an MKErrorLoadingThrottled error (="MKErrorDomain error 3"). To prevent getting such errors you shouldn't send a local search request on each search phrase change. You have to delay the requests.
+         On each search phrase change the timer gets invalidated and reinitialized with a time interval of 0.5 seconds. This means, that the timer only fires when there was no search phrase change for the last 0.5 seconds. As soon as the timer fires the local search will be submitted.
+         */
+        searchTimer?.invalidate()
         searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
             self.localSearchFor(phrase: searchPhrase)
         })
     }
     
     fileprivate func localSearchFor(phrase: String){
-        // Prevent 4
+        
+        /* Don't send empty search phrases */
         if phrase.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty  {
             searchResults.removeAll()
             tableView.reloadData()
@@ -70,9 +73,13 @@ extension SearchController: UISearchResultsUpdating {
         
         let localSearch = MKLocalSearch(request: searchRequest)
         
-        localSearch.start { response, _ in
-            
-            guard let searchResponse = response else { return }
+        localSearch.start { response, error in
+            /* on error (no response) clear results and reload tableView */
+            guard let searchResponse = response else {
+                self.searchResults.removeAll()
+                self.tableView.reloadData()
+                return
+            }
             
             self.searchResults = searchResponse.mapItems
             self.tableView.reloadData()

@@ -36,6 +36,14 @@ class MainViewController: UIViewController {
         return createLabel()
     }()
     
+    lazy var latLabel: UILabel = {
+        return createLabel()
+    }()
+    
+    lazy var longLabel: UILabel = {
+        return createLabel()
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +60,8 @@ class MainViewController: UIViewController {
         view.addSubview(cityLabel)
         view.addSubview(countryLabel)
         view.addSubview(countryCodeLabel)
+        view.addSubview(latLabel)
+        view.addSubview(longLabel)
         
         streetLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         streetLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40).isActive = true
@@ -70,6 +80,12 @@ class MainViewController: UIViewController {
         
         countryCodeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         countryCodeLabel.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: 5).isActive = true
+        
+        latLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        latLabel.topAnchor.constraint(equalTo: countryCodeLabel.bottomAnchor, constant: 5).isActive = true
+        
+        longLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        longLabel.topAnchor.constraint(equalTo: latLabel.bottomAnchor, constant: 5).isActive = true
     
     }
     
@@ -95,7 +111,7 @@ class MainViewController: UIViewController {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         l.tintColor = UIColor.darkGray
-        l.font = UIFont.boldSystemFont(ofSize: 16)
+        l.font = UIFont.boldSystemFont(ofSize: 15)
         
         return l
     }
@@ -108,6 +124,8 @@ extension MainViewController: SearchResultDelegate {
         cityLabel.text = "City: \(mapItem.placemark.locality ?? "")"
         countryLabel.text = "Country: \(mapItem.placemark.country ?? "")"
         countryCodeLabel.text = "Country code: \(mapItem.placemark.countryCode ?? "")"
+        latLabel.text = "Latitude: \(mapItem.placemark.coordinate.latitude)"
+        longLabel.text = "Longitude: \(mapItem.placemark.coordinate.longitude)"
         
         // clear search phrase
         searchController.searchBar.text = ""
