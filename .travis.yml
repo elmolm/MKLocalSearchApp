@@ -1,0 +1,26 @@
+os: osx
+osx_image: xcode10.1
+language: swift
+xcode_project: MKLocalSearchApp.xcodeproj 
+xcode_scheme: MKLocalSearchApp
+
+before_install:
+      gem install xcpretty -N --no-ri --no-rdoc;
+      gem install xcpretty-travis-formatter -N --no-ri --no-rdoc;
+      gem install cocoapods --pre --no-rdoc --no-ri --no-document;
+      brew update;
+      brew outdated carthage || brew upgrade carthage;
+
+script:
+  - set -o pipefail
+
+  - swift -version
+
+  - xcodebuild -version
+      
+  - xcodebuild -showsdks
+
+  - xcodebuild clean test -project "MKLocalSearchApp.xcodeproj" -scheme "MKLocalSearchApp" -destination "OS=12.1,name=iPhone X" -enableCodeCoverage YES | xcpretty - f 'xcpretty-travis-formatter';
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -X xcodeplist;
