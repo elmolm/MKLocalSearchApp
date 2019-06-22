@@ -242,13 +242,16 @@
 				TargetAttributes = {
 					55DE492321B8234F0016AFAF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					55DE493721B823510016AFAF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 55DE492321B8234F0016AFAF;
 					};
 					55DE494221B823510016AFAF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 55DE492321B8234F0016AFAF;
 					};
 				};
@@ -485,7 +488,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sneedit.MKLocalSearchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -503,7 +506,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sneedit.MKLocalSearchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -523,7 +526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sneedit.MKLocalSearchAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MKLocalSearchApp.app/MKLocalSearchApp";
 			};
@@ -544,7 +547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sneedit.MKLocalSearchAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MKLocalSearchApp.app/MKLocalSearchApp";
 			};
@@ -564,7 +567,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sneedit.MKLocalSearchAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MKLocalSearchApp;
 			};
@@ -584,7 +587,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sneedit.MKLocalSearchAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MKLocalSearchApp;
 			};
