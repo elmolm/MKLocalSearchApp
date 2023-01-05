@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/elmolm/MKLocalSearchApp.svg?branch=master)](https://travis-ci.org/elmolm/MKLocalSearchApp)
 ![Swift 5.0](https://img.shields.io/badge/swift-5.0-orange.svg)
 
 # MKLocalSearchApp - iOS Swift 5.0 - How to local search MapKit
